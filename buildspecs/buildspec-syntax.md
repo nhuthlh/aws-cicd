@@ -160,3 +160,26 @@ cache:
   - artifacts/secondary-artifacts: Represents one or more artifact definitions as a mapping between an artifact identifier and an artifact definition.
 - **cache:** (optional) Represents information about where CodeBuild can prepare the files for uploading cache to an S3 cache bucket.
   - cache/paths: Represents the locations of the cache.
+
+  ```
+version: 0.2
+
+phases: 
+    install:
+        runtime-versions:
+            nodejs: latest
+        commands:
+            - echo "installing something"
+    pre_build:
+        commands: 
+            - echo "we are in the pre build phase"
+    build:
+        commands:
+            - echo "we are in the build block"
+            - echo "we will run some tests"
+            - grep -Fq "Congratulations" index.html
+    post_build:
+        commands:
+            - echo "we are in the post build phase"
+            
+```
