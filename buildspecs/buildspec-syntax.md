@@ -161,7 +161,7 @@ cache:
 - **cache:** (optional) Represents information about where CodeBuild can prepare the files for uploading cache to an S3 cache bucket.
   - cache/paths: Represents the locations of the cache.
 
-  ```
+```
 version: 0.2
 
 phases: 
@@ -181,5 +181,4 @@ phases:
     post_build:
         commands:
             - echo "we are in the post build phase"
-            
 ```
