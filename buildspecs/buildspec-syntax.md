@@ -1,3 +1,21 @@
+# Buildspec file name and storage location
+If you include a buildspec as part of the source code, by default, the buildspec file must be named **buildspec.yml** and placed in the root of your source directory.
+
+- You can override the default buildspec file name and location. For example, you can:
+- Use a different buildspec file for different builds in the same repository, such as buildspec_debug.yml and buildspec_release.yml.
+
+Store a buildspec file somewhere other than the root of your source directory, such as config/buildspec.yml or in an S3 bucket. The S3 bucket must be in the same AWS Region as your build project. Specify the buildspec file using its ARN (for example, arn:aws:s3:::my-codebuild-sample2/buildspec.yml).
+
+You can specify only one buildspec for a build project, regardless of the buildspec file's name.
+
+To override the default buildspec file name, location, or both, do one of the following:
+
+- Run the AWS CLI create-project or update-project command, setting the buildspec value to the path to the alternate buildspec file relative to the value of the built-in environment variable CODEBUILD_SRC_DIR. You can also do the equivalent with the create project operation in the AWS SDKs. For more information, see Create a build project or Change a build project's settings.
+
+- Run the AWS CLI start-build command, setting the buildspecOverride value to the path to the alternate buildspec file relative to the value of the built-in environment variable CODEBUILD_SRC_DIR. You can also do the equivalent with the start build operation in the AWS SDKs. For more information, see Run a build.
+
+- In an AWS CloudFormation template, set the BuildSpec property of Source in a resource of type AWS::CodeBuild::Project to the path to the alternate buildspec file relative to the value of the built-in environment variable CODEBUILD_SRC_DIR. For more information, see the BuildSpec property in AWS CodeBuild project source in the AWS CloudFormation User Guide.
+
 # Buildspec syntax
 
 https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
